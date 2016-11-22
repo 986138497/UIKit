@@ -20,7 +20,6 @@
 		ABC348681DE40CBE0078CE71 /* NSObject+Kit.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC348631DE40CBE0078CE71 /* NSObject+Kit.m */; };
 		ABC348691DE40CBE0078CE71 /* NSString+Kit.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC348651DE40CBE0078CE71 /* NSString+Kit.m */; };
 		ABC3486C1DE40D0A0078CE71 /* NSTimer+Kit.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC3486B1DE40D0A0078CE71 /* NSTimer+Kit.m */; };
-		ABC3486F1DE4140C0078CE71 /* UITableView+HDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC3486E1DE4140C0078CE71 /* UITableView+HDExtension.m */; };
 		ABDFBE071DE2C85E00E62A11 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDFBE061DE2C85E00E62A11 /* main.m */; };
 		ABDFBE0A1DE2C85F00E62A11 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDFBE091DE2C85F00E62A11 /* AppDelegate.m */; };
 		ABDFBE0D1DE2C85F00E62A11 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDFBE0C1DE2C85F00E62A11 /* ViewController.m */; };
@@ -77,8 +76,6 @@
 		ABC348651DE40CBE0078CE71 /* NSString+Kit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Kit.m"; sourceTree = "<group>"; };
 		ABC3486A1DE40D0A0078CE71 /* NSTimer+Kit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Kit.h"; sourceTree = "<group>"; };
 		ABC3486B1DE40D0A0078CE71 /* NSTimer+Kit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Kit.m"; sourceTree = "<group>"; };
-		ABC3486D1DE4140C0078CE71 /* UITableView+HDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+HDExtension.h"; sourceTree = "<group>"; };
-		ABC3486E1DE4140C0078CE71 /* UITableView+HDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+HDExtension.m"; sourceTree = "<group>"; };
 		ABDFBE021DE2C85E00E62A11 /* UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDFBE061DE2C85E00E62A11 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABDFBE081DE2C85E00E62A11 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -210,8 +207,6 @@
 		ABDFBE381DE2C88600E62A11 /* UIKits */ = {
 			isa = PBXGroup;
 			children = (
-				ABC3486D1DE4140C0078CE71 /* UITableView+HDExtension.h */,
-				ABC3486E1DE4140C0078CE71 /* UITableView+HDExtension.m */,
 				ABDFBE391DE2C89D00E62A11 /* UILabel+Kit.h */,
 				ABDFBE3A1DE2C89D00E62A11 /* UILabel+Kit.m */,
 				ABDFBE3C1DE2D30E00E62A11 /* UIButton+Kit.h */,
@@ -387,7 +382,6 @@
 				ABC348671DE40CBE0078CE71 /* NSMutableString+Kit.m in Sources */,
 				ABC3484D1DE2EF200078CE71 /* UITextView+Kit.m in Sources */,
 				ABDFBE3B1DE2C89D00E62A11 /* UILabel+Kit.m in Sources */,
-				ABC3486F1DE4140C0078CE71 /* UITableView+HDExtension.m in Sources */,
 				ABC348661DE40CBE0078CE71 /* NSDate+Kit.m in Sources */,
 				ABDFBE0A1DE2C85F00E62A11 /* AppDelegate.m in Sources */,
 				ABDFBE071DE2C85E00E62A11 /* main.m in Sources */,
