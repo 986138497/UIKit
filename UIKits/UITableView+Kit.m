@@ -6,7 +6,7 @@
 //  Copyright © 2016年 lei. All rights reserved.
 //
 
-#import "UITableView+HDExtension.h"
+#import "UITableView+Kit.h"
 #import <objc/runtime.h>
 
 @implementation UITableView (HDExtension)
