@@ -223,10 +223,10 @@
     //    NSString *string = @"<f7091300 00000000 830000c4 00002c00 0000c500>";
     NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"@／：；（）¥「」＂、<>[]{}#%-*+=_\\|~＜＞$?^?'@#$%^&*()_+'\""];
     NSString*trimmedString = [string stringByTrimmingCharactersInSet:set];
-    UILog(@"trimmedString1:%@",trimmedString);
+    NSLog(@"trimmedString1:%@",trimmedString);
     // 去除字符串的空格
     trimmedString = [trimmedString stringByReplacingOccurrencesOfString:@" " withString:@""];
-    UILog(@"trimmedString2: %@",trimmedString);
+    NSLog(@"trimmedString2: %@",trimmedString);
     
     return trimmedString;
 }
@@ -332,7 +332,7 @@
         myBuffer[i / 2] = (char)anInt;
     }
     NSString *unicodeString = [NSString stringWithCString:myBuffer encoding:4];
-    UILog(@"------字符串=======%@",unicodeString);
+    NSLog(@"------字符串=======%@",unicodeString);
     return unicodeString;
 }
 

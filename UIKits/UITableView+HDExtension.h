@@ -1,66 +1,47 @@
 //
-//  UITableView+Kit.h
-//  UIKit
+//  UITableView+HDExtension.h
+//  PortableTreasure
 //
-//  Created by lei on 2016/11/22.
-//  Copyright © 2016年 lei. All rights reserved.
-//
+//  Created by HeDong on 15/7/30.
+//  Copyright © 2015年 hedong. All rights reserved.
+//  避免Block循环引用!!!
+//  __weak typeof(self) weakSelf = self;
+//  __strong typeof(weakSelf) strongSelf = weakSelf;
+//  __TVOS_PROHIBITED 苹果不建议使用的方法都已经注释!!!
 
-/*
- 用法,直接创建UITableView,不用写代理方法,直接复制上面的代码用就行了
- _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
- [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:movieCellIdentifier];
- [self.view addSubview:_tableView];
- //cell高度
- [[ [[self.tableView tableViewHeightForRowAtIndexPathBlock:^CGFloat(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
- return 120;
- 
- }]numberOfSectionsInTableViewBlock:^NSInteger(UITableView * _Nonnull tableView) {
- return 1;
- }]tableViewNumberOfRowsInSectionBlock:^NSInteger(UITableView * _Nonnull tableView, NSInteger section) {
- return 10;
- }] tableViewCellForRowAtIndexPathBlock:^UITableViewCell * _Nonnull(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:movieCellIdentifier];
- return cell;
- }];
- //cell的选择
- [self.tableView tableViewDidSelectRowAtIndexPathBlock:^(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
- 
- }];
- */
 
 #import <UIKit/UIKit.h>
+
 NS_ASSUME_NONNULL_BEGIN
-@interface UITableView (Kit)
+
+@interface UITableView (HDExtension)
 
 #pragma mark - UITableViewDataSourceBlcok
-/**
- *  @author lei, 16-09-27 15:08:15
- *
- *  UITableView的封装
- */
+//_______________________________________________________________________________________________________________
+// this protocol represents the data model object. as such, it supplies no information about appearance (including the cells)
 
-
-//里面有多少个,同-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+/******* @required *******/
 - (instancetype)zzl_tableViewNumberOfRowsInSectionBlock:(NSInteger (^)(UITableView *tableView, NSInteger section))zzl_tableViewNumberOfRowsInSectionBlock;
 
-
-// 返回cell 同(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 - (instancetype)zzl_tableViewCellForRowAtIndexPathBlock:(UITableViewCell * (^)(UITableView *tableView, NSIndexPath *indexPath))zzl_tableViewCellForRowAtIndexPathBlock;
 
-//返回cell的个数,同-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView.默认为1
-- (instancetype)zzl_numberOfSectionsInTableViewBlock:(NSInteger (^)(UITableView *tableView))zzl_numberOfSectionsInTableViewBlock;//
+/******* @optional *******/
+- (instancetype)zzl_numberOfSectionsInTableViewBlock:(NSInteger (^)(UITableView *tableView))zzl_numberOfSectionsInTableViewBlock; // Default is 1 if not implemented
 
-// 组头尾标题
+// fixed font style. use custom view (UILabel) if you want something different
 - (instancetype)zzl_tableViewTitleForHeaderInSectionBlock:(NSString * (^)(UITableView *tableView, NSInteger section))zzl_tableViewTitleForHeaderInSectionBlock;
 - (instancetype)zzl_tableViewTitleForFooterInSectionBlock:(NSString * (^)(UITableView *tableView, NSInteger section))zzl_tableViewTitleForFooterInSectionBlock;
 
-// 编辑
+// Editing
+
+// Individual rows can opt out of having the -editing property set for them. If not implemented, all rows are assumed to be editable.
 - (instancetype)zzl_tableViewCanEditRowAtIndexPathBlock:(BOOL (^)(UITableView *tableView, NSIndexPath *indexPath))zzl_tableViewCanEditRowAtIndexPathBlock;
 
-// 移动/重新排序
+// Moving/reordering
 
-// 允许重新排序附属视图选择为一个特定的行显示。默认情况下,重新排序将只显示如果数据源实现控制 同-tableView:moveRowAtIndexPath:toIndexPath:
+// Allows the reorder accessory view to optionally be shown for a particular row. By default, the reorder control will be shown only if the datasource implements -tableView:moveRowAtIndexPath:toIndexPath:
 - (instancetype)zzl_tableViewCanMoveRowAtIndexPathBlock:(BOOL (^)(UITableView *tableView, NSIndexPath *indexPath))zzl_tableViewCanMoveRowAtIndexPathBlock;
 
 // Index

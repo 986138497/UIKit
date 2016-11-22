@@ -1,9 +1,9 @@
 //
-//  UITableView+Kit.h
-//  UIKit
+//  UITableView+HDExtension.m
+//  PortableTreasure
 //
-//  Created by lei on 2016/11/22.
-//  Copyright © 2016年 lei. All rights reserved.
+//  Created by HeDong on 15/7/30.
+//  Copyright © 2015年 hedong. All rights reserved.
 //
 
 #import "UITableView+HDExtension.h"
@@ -51,7 +51,7 @@
     if ([dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
         return [dataSource numberOfSectionsInTableView:tableView];
     }
-    
+
     return 1; // 默认是1组
 }
 
@@ -115,13 +115,13 @@
 //    if (tableView.zzl_sectionIndexTitlesForTableViewBlock) {
 //        return tableView.zzl_sectionIndexTitlesForTableViewBlock(tableView);
 //    }
-//
+//    
 //    id dataSource = objc_getAssociatedObject(self, UITableViewDataSourceKey);
-//
+//    
 //    if ([dataSource respondsToSelector:@selector(sectionIndexTitlesForTableView:)]) {
 //        return [dataSource sectionIndexTitlesForTableView:tableView];
 //    }
-//
+//    
 //    return nil;
 //}
 
@@ -129,13 +129,13 @@
 //    if (tableView.zzl_tableViewSectionForSectionIndexTitleAtIndexBlock) {
 //        return tableView.zzl_tableViewSectionForSectionIndexTitleAtIndexBlock(tableView, title, index);
 //    }
-//
+//    
 //    id dataSource = objc_getAssociatedObject(self, UITableViewDataSourceKey);
-//
+//    
 //    if ([dataSource respondsToSelector:@selector(tableView:sectionForSectionIndexTitle:atIndex:)]) {
 //        return [dataSource tableView:tableView sectionForSectionIndexTitle:title atIndex:index];
 //    }
-//
+//    
 //    return 0;
 //}
 
@@ -278,7 +278,7 @@ static const void *UITableViewMoveRowAtIndexPathToIndexPathKey       = &UITableV
 //- (instancetype)zzl_sectionIndexTitlesForTableViewBlock:(NSArray<NSString *> * (^)(UITableView *tableView))zzl_sectionIndexTitlesForTableViewBlock __TVOS_PROHIBITED {
 //    [self zzl_setDataSourceIfDataSourceSet];
 //    objc_setAssociatedObject(self, UITableViewSectionIndexTitlesForTableViewKey, zzl_sectionIndexTitlesForTableViewBlock, OBJC_ASSOCIATION_COPY);
-//
+//    
 //    return self;
 //}
 
@@ -290,7 +290,7 @@ static const void *UITableViewMoveRowAtIndexPathToIndexPathKey       = &UITableV
 //- (instancetype)zzl_tableViewSectionForSectionIndexTitleAtIndexBlock:(NSInteger (^)(UITableView *tableView, NSString *title, NSInteger index))zzl_tableViewSectionForSectionIndexTitleAtIndexBlock __TVOS_PROHIBITED {
 //    [self zzl_setDataSourceIfDataSourceSet];
 //    objc_setAssociatedObject(self, UITableViewSectionForSectionIndexTitleAtIndexKey, zzl_tableViewSectionForSectionIndexTitleAtIndexBlock, OBJC_ASSOCIATION_COPY);
-//
+//    
 //    return self;
 //}
 
@@ -336,7 +336,7 @@ static const void *UITableViewMoveRowAtIndexPathToIndexPathKey       = &UITableV
     if (tableView.zzl_tableViewWillDisplayCellForRowAtIndexPathBlock) {
         return tableView.zzl_tableViewWillDisplayCellForRowAtIndexPathBlock(tableView, cell, indexPath);
     }
-    
+
     id dataSource = objc_getAssociatedObject(self, UITableViewDelegateKey);
     
     if ([dataSource respondsToSelector:@selector(tableView:willDisplayCell:forRowAtIndexPath:)]) {
@@ -520,13 +520,13 @@ static const void *UITableViewMoveRowAtIndexPathToIndexPathKey       = &UITableV
 //    if (tableView.zzl_tableViewAccessoryTypeForRowWithIndexPathBlock) {
 //        return tableView.zzl_tableViewAccessoryTypeForRowWithIndexPathBlock(tableView, indexPath);
 //    }
-//
+//    
 //    id dataSource = objc_getAssociatedObject(self, UITableViewDelegateKey);
-//
+//    
 //    if ([dataSource respondsToSelector:@selector(tableView:accessoryTypeForRowWithIndexPath:)]) {
 //        return [dataSource tableView:tableView accessoryTypeForRowWithIndexPath:indexPath];
 //    }
-//
+//    
 //    return UITableViewCellAccessoryNone; // 默认为none
 //}
 
@@ -650,13 +650,13 @@ static const void *UITableViewMoveRowAtIndexPathToIndexPathKey       = &UITableV
 //    if (tableView.zzl_tableViewTitleForDeleteConfirmationButtonForRowAtIndexPathBlock) {
 //        return tableView.zzl_tableViewTitleForDeleteConfirmationButtonForRowAtIndexPathBlock(tableView, indexPath);
 //    }
-//
+//    
 //    id dataSource = objc_getAssociatedObject(self, UITableViewDelegateKey);
-//
+//    
 //    if ([dataSource respondsToSelector:@selector(tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:)]) {
 //        return [dataSource tableView:tableView titleForDeleteConfirmationButtonForRowAtIndexPath:indexPath];
 //    }
-//
+//    
 //    return nil;
 //}
 
@@ -664,13 +664,13 @@ static const void *UITableViewMoveRowAtIndexPathToIndexPathKey       = &UITableV
 //    if (tableView.zzl_tableViewEditActionsForRowAtIndexPathBlock) {
 //        return tableView.zzl_tableViewEditActionsForRowAtIndexPathBlock(tableView, indexPath);
 //    }
-//
+//    
 //    id dataSource = objc_getAssociatedObject(self, UITableViewDelegateKey);
-//
+//    
 //    if ([dataSource respondsToSelector:@selector(tableView:editActionsForRowAtIndexPath:)]) {
 //        return [dataSource tableView:tableView editActionsForRowAtIndexPath:indexPath];
 //    }
-//
+//    
 //    return nil;
 //}
 
@@ -692,9 +692,9 @@ static const void *UITableViewMoveRowAtIndexPathToIndexPathKey       = &UITableV
 //    if (tableView.zzl_tableViewWillBeginEditingRowAtIndexPathBlock) {
 //        return tableView.zzl_tableViewWillBeginEditingRowAtIndexPathBlock(tableView, indexPath);
 //    }
-//
+//    
 //    id dataSource = objc_getAssociatedObject(self, UITableViewDelegateKey);
-//
+//    
 //    if ([dataSource respondsToSelector:@selector(tableView:willBeginEditingRowAtIndexPath:)]) {
 //        return [dataSource tableView:tableView willBeginEditingRowAtIndexPath:indexPath];
 //    }
@@ -704,9 +704,9 @@ static const void *UITableViewMoveRowAtIndexPathToIndexPathKey       = &UITableV
 //    if (tableView.zzl_tableViewDidEndEditingRowAtIndexPathBlock) {
 //        return tableView.zzl_tableViewDidEndEditingRowAtIndexPathBlock(tableView, indexPath);
 //    }
-//
+//    
 //    id dataSource = objc_getAssociatedObject(self, UITableViewDelegateKey);
-//
+//    
 //    if ([dataSource respondsToSelector:@selector(tableView:didEndEditingRowAtIndexPath:)]) {
 //        return [dataSource tableView:tableView didEndEditingRowAtIndexPath:indexPath];
 //    }
@@ -1046,7 +1046,7 @@ static const void *UITableViewIndexPathForPreferredFocusedViewInTableViewKey    
 //- (instancetype)zzl_tableViewAccessoryTypeForRowWithIndexPathBlock:(UITableViewCellAccessoryType (^)(UITableView *tableView, NSIndexPath *indexPath))zzl_tableViewAccessoryTypeForRowWithIndexPathBlock NS_DEPRECATED_IOS(2_0, 3_0) __TVOS_PROHIBITED {
 //    [self zzl_setDelegateIfDelegateSet];
 //    objc_setAssociatedObject(self, UITableViewAccessoryTypeForRowWithIndexPathKey, zzl_tableViewAccessoryTypeForRowWithIndexPathBlock, OBJC_ASSOCIATION_COPY);
-//
+//    
 //    return self;
 //}
 
@@ -1164,7 +1164,7 @@ static const void *UITableViewIndexPathForPreferredFocusedViewInTableViewKey    
 //- (instancetype)zzl_tableViewTitleForDeleteConfirmationButtonForRowAtIndexPathBlock:(nullable NSString * (^)(UITableView *tableView, NSIndexPath *indexPath))zzl_tableViewTitleForDeleteConfirmationButtonForRowAtIndexPathBlock NS_AVAILABLE_IOS(3_0) __TVOS_PROHIBITED {
 //    [self zzl_setDelegateIfDelegateSet];
 //    objc_setAssociatedObject(self, UITableViewTitleForDeleteConfirmationButtonForRowAtIndexPathKey, zzl_tableViewTitleForDeleteConfirmationButtonForRowAtIndexPathBlock, OBJC_ASSOCIATION_COPY);
-//
+//    
 //    return self;
 //}
 
@@ -1175,7 +1175,7 @@ static const void *UITableViewIndexPathForPreferredFocusedViewInTableViewKey    
 //- (instancetype)zzl_tableViewEditActionsForRowAtIndexPathBlock:(nullable NSArray<UITableViewRowAction *> * (^)(UITableView *tableView, NSIndexPath *indexPath))zzl_tableViewEditActionsForRowAtIndexPathBlock NS_AVAILABLE_IOS(8_0) __TVOS_PROHIBITED { // supercedes -tableView:titleForDeleteConfirmationButtonForRowAtIndexPath: if return value is non-nil
 //    [self zzl_setDelegateIfDelegateSet];
 //    objc_setAssociatedObject(self, UITableViewEditActionsForRowAtIndexPathKey, zzl_tableViewEditActionsForRowAtIndexPathBlock, OBJC_ASSOCIATION_COPY);
-//
+//    
 //    return self;
 //}
 
@@ -1199,7 +1199,7 @@ static const void *UITableViewIndexPathForPreferredFocusedViewInTableViewKey    
 //- (instancetype)zzl_tableViewWillBeginEditingRowAtIndexPathBlock:(void (^)(UITableView *tableView, NSIndexPath *indexPath))zzl_tableViewWillBeginEditingRowAtIndexPathBlock __TVOS_PROHIBITED {
 //    [self zzl_setDelegateIfDelegateSet];
 //    objc_setAssociatedObject(self, UITableViewWillBeginEditingRowAtIndexPathKey, zzl_tableViewWillBeginEditingRowAtIndexPathBlock, OBJC_ASSOCIATION_COPY);
-//
+//    
 //    return self;
 //}
 
@@ -1210,7 +1210,7 @@ static const void *UITableViewIndexPathForPreferredFocusedViewInTableViewKey    
 //- (instancetype)zzl_tableViewDidEndEditingRowAtIndexPathBlock:(void (^)(UITableView *tableView, NSIndexPath *indexPath))zzl_tableViewDidEndEditingRowAtIndexPathBlock __TVOS_PROHIBITED {
 //    [self zzl_setDelegateIfDelegateSet];
 //    objc_setAssociatedObject(self, UITableViewDidEndEditingRowAtIndexPathKey, zzl_tableViewDidEndEditingRowAtIndexPathBlock, OBJC_ASSOCIATION_COPY);
-//
+//    
 //    return self;
 //}
 

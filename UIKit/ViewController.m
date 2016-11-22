@@ -13,7 +13,7 @@
 #import "UITextView+Kit.h"
 #import "UITableView+Kit.h"
 @interface ViewController ()<UITextFieldDelegate,UITextViewDelegate>
-@property (nonatomic, strong)UITableView *tableView;
+@property (nonatomic, strong)UITableView *testTableView;
 
 @end
 
@@ -32,33 +32,65 @@
     
 }
 -(void)createTableView{
-       //用法,直接创建UITableView,不用写代理方法,直接复制上面的代码用就行了
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
-    _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    //[_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    [self.view addSubview:_tableView];
-    //cell高度
-    [[ [[self.tableView tableViewHeightForRowAtIndexPathBlock:^CGFloat(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
-        return 60;
+    //一个分区
+//    UITableView *testTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+//    [self.view addSubview:testTableView];
+//    self.testTableView = testTableView;
+//    [[[self.testTableView zzl_numberOfSectionsInTableViewBlock:^NSInteger(UITableView * _Nonnull tableView) {
+//        return 1;
+//    }] zzl_tableViewNumberOfRowsInSectionBlock:^NSInteger(UITableView * _Nonnull tableView, NSInteger section) {
+//        return 10;
+//    }] zzl_tableViewCellForRowAtIndexPathBlock:^UITableViewCell * _Nonnull(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
+//        static NSString *const cellID = @"cellID";
+//        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+//        cell.textLabel.text = @"textLabel";
+//        cell.detailTextLabel.text = @"detailTextLabel";
+//        
+//        return cell;
+//    }];
+
+    //多个分区
+    UITableView *testTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    [self.view addSubview:testTableView];
+    self.testTableView = testTableView;
+    // UITableView三大基本方法
+    [[[self.testTableView zzl_numberOfSectionsInTableViewBlock:^NSInteger(UITableView * _Nonnull tableView) {
+        return 2;
+    }] zzl_tableViewNumberOfRowsInSectionBlock:^NSInteger(UITableView * _Nonnull tableView, NSInteger section) {
+        return 3;
+    }] zzl_tableViewCellForRowAtIndexPathBlock:^UITableViewCell * _Nonnull(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
+        static NSString *const cellID = @"cellID";
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+        cell.textLabel.text = @"textLabel";
+        cell.detailTextLabel.text = @"detailTextLabel";
         
-    }]numberOfSectionsInTableViewBlock:^NSInteger(UITableView * _Nonnull tableView) {
-        return 1;
-    }]tableViewNumberOfRowsInSectionBlock:^NSInteger(UITableView * _Nonnull tableView, NSInteger section) {
-        return 10;
-    } ] tableViewCellForRowAtIndexPathBlock:^UITableViewCell * _Nonnull(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
-        static NSString *cellId = @"cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        if (cell==nil) {
-            cell= [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-        }
-        cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
         return cell;
     }];
-    //cell的选择
-    [self.tableView tableViewDidSelectRowAtIndexPathBlock:^(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
-        
+    
+    // 组头尾标题
+    [[self.testTableView zzl_tableViewTitleForHeaderInSectionBlock:^NSString * _Nonnull(UITableView * _Nonnull tableView, NSInteger section) {
+        return @"You";
+    }] zzl_tableViewTitleForFooterInSectionBlock:^NSString * _Nonnull(UITableView * _Nonnull tableView, NSInteger section) {
+        return @"Me";
     }];
+    
+    //  避免Block循环引用!!!
+    //  __weak typeof(self) weakSelf = self;
+    //  __strong typeof(weakSelf) strongSelf = weakSelf;
+    __weak typeof(self) weakSelf = self;
+    [self.testTableView zzl_tableViewDidSelectRowAtIndexPathBlock:^(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (!strongSelf) {
+            return;
+        }
+        
+        NSLog(@"打印 = %@", indexPath);
+      
+    }];
+
+    
 }
+
 -(void)createLabel{
     UILabel *label = [[UILabel alloc]init];
     label.LabelBackGroundColor([UIColor redColor])
