@@ -12,19 +12,19 @@
  [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:movieCellIdentifier];
  [self.view addSubview:_tableView];
  //cell高度
- [[ [[self.tableView tableViewHeightForRowAtIndexPathBlock:^CGFloat(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
+ [[ [[self.tableView zzl_tableViewHeightForRowAtIndexPathBlock:^CGFloat(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
  return 120;
  
- }]numberOfSectionsInTableViewBlock:^NSInteger(UITableView * _Nonnull tableView) {
+ }]zzl_numberOfSectionsInTableViewBlock:^NSInteger(UITableView * _Nonnull tableView) {
  return 1;
- }]tableViewNumberOfRowsInSectionBlock:^NSInteger(UITableView * _Nonnull tableView, NSInteger section) {
+ }]zzl_tableViewNumberOfRowsInSectionBlock:^NSInteger(UITableView * _Nonnull tableView, NSInteger section) {
  return 10;
- }] tableViewCellForRowAtIndexPathBlock:^UITableViewCell * _Nonnull(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
+ }] zzl_tableViewCellForRowAtIndexPathBlock:^UITableViewCell * _Nonnull(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:movieCellIdentifier];
  return cell;
  }];
  //cell的选择
- [self.tableView tableViewDidSelectRowAtIndexPathBlock:^(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
+ [self.tableView zzl_tableViewDidSelectRowAtIndexPathBlock:^(UITableView * _Nonnull tableView, NSIndexPath * _Nonnull indexPath) {
  
  }];
  */
