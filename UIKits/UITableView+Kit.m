@@ -28,6 +28,24 @@
     };
 }
 /**
+ sectionFooterHeight
+ */
+-(UITableView *(^)(int))tableViewSectionFooterHeight{
+    return ^(int sectionFooterHeight){
+        self.sectionFooterHeight = sectionFooterHeight;
+        return self;
+    };
+}
+/**
+ sectionHeaderHeight
+ */
+-(UITableView *(^)(int))tableViewSectionHeaderHeight{
+    return ^(int sectionHeaderHeight){
+        self.sectionHeaderHeight = sectionHeaderHeight;
+        return self;
+    };
+}
+/**
  剪切边界，默认值是NO
  */
 -(UITableView *(^)(BOOL))tableViewClipsToBounds{

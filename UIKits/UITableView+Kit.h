@@ -18,6 +18,14 @@
  */
 -(UITableView *(^)(CGSize))tableViewContentSize;
 /**
+ sectionFooterHeight
+ */
+-(UITableView *(^)(int))tableViewSectionFooterHeight;
+/**
+ sectionHeaderHeight
+ */
+-(UITableView *(^)(int))tableViewSectionHeaderHeight;
+/**
  剪切边界，默认值是NO
  */
 -(UITableView *(^)(BOOL))tableViewClipsToBounds;

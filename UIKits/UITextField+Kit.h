@@ -78,6 +78,14 @@
  */
 -(UITextField *(^)(NSTextAlignment))textFieldTextAlignment;
 /**
+ leftView
+ */
+-(UITextField *(^)(UIView *))textFieldLeftView;
+/**
+ rightView
+ */
+-(UITextField *(^)(UIView *))textFieldRightView;
+/**
  添加到某个view上
  */
 -(UITextField *(^)(UIView *))textFieldSuperView;

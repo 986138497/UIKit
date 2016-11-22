@@ -157,6 +157,26 @@
     };
 }
 /**
+ leftView
+ */
+-(UITextField *(^)(UIView *))textFieldLeftView{
+    return ^(UIView *leftView){
+        self.leftView=leftView;
+        self.leftViewMode=UITextFieldViewModeAlways;
+        return self;
+    };
+}
+/**
+ rightView
+ */
+-(UITextField *(^)(UIView *))textFieldRightView{
+    return ^(UIView *rightView){
+        self.rightView=rightView;
+        self.rightViewMode=UITextFieldViewModeAlways;
+        return self;
+    };
+}
+/**
  添加到某个view上
  */
 -(UITextField *(^)(UIView *))textFieldSuperView{
